@@ -66,12 +66,14 @@ public class Trans {
 					nota += carac;
 					cont++;
 				}
-				else if((cont == 4 || cont ==3) && (carac == ' ' || carac == '\n' ||
+				else if((cont == 5 || cont == 3 || cont == 4) && (carac == ' ' || carac == '\n' ||
 						carac == '\t' || carac == '\r')) {
 					nota += ' ';
 					cont = 1;
 				}
 			}
+			nota += " ";
+			
 			return true;
 		}
 		catch (IOException e){
@@ -87,24 +89,27 @@ public class Trans {
 		char[] auxNota = new char[nota.length()];
 		auxNota = nota.toCharArray();
 
-		barra = new BarraDeProgresso(nota.length()-1);
+		barra = new BarraDeProgresso(nota.length());
 		
-		System.out.println("tamanho: " + nota.length());
+		
 		
 		for(int i = 0; i < nota.length(); i++) {
+			
 			if(auxNota[i] != ' ') {
 				notAt += auxNota[i];
+				
 			}
 			
-			else 
+			
+			else {
+				
 				if(notAt != "") {
 					if(notAt.toCharArray()[1] >= 'A' && notAt.toCharArray()[1] <= 'Z') {
 						notAt = notAt.toLowerCase();
 						oitava = 12;
 					}
 					
-					barra.setValor(i);
-					System.out.println("i: " + i);
+					barra.setValor(i+1);
 					
 					for(int j = 0; j < 12; j++){
 				        if(notAt.equals(notas1[j])){
@@ -142,7 +147,7 @@ public class Trans {
 				                    break;
 
 				                case 9:
-				                    notOut = 68 + oitava;
+				                    notOut = 68 + oitava;//sol#
 				                    break;
 
 				                case 10:
@@ -161,17 +166,17 @@ public class Trans {
 				                    notOut = 126;
 				                    break;
 				            }
-				            
 				            saida += "   " + (char)notOut;
 				            notAt="";
+				            oitava = 0;
 				            break;
 				        }	
 					}
 				}
+			}
 			
 		}
 		try{
-            System.out.println("salvo: " + notOut);
             out.write(saida.getBytes(), 0, saida.length());
             out.flush();
 			out.close();
