@@ -54,6 +54,10 @@ public class Principal {
 		private ImageIcon tip_icon = new ImageIcon("resources/tip-icon.png");
 		private ImageIcon tip_icon2 = new ImageIcon("resources/tip-icon2.png");
 		
+		private JButton gitB;
+		private ImageIcon git  = new ImageIcon("resources/git-icon.png");
+		private ImageIcon git2 = new ImageIcon("resources/git-icon2.png");
+		
 		private JFileChooser escolher; //seletor de arquivo		
 		private String DirOrig = null;		//diretorio de origem do arquivo
 		private String DirSalv = null;  	//diretorio onde ira salvar o novo arquivo
@@ -159,8 +163,19 @@ public class Principal {
 			tips.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			tips.setFocusable(false);
 			tips.setToolTipText("Dicas");
-			tips.setBounds(30, 118, 50, 50);
+			tips.setBounds(35, 118, 50, 50);
 			frame.getContentPane().add(tips);
+			
+			//botao criador
+			gitB = new JButton();
+			gitB.setIcon(git);
+			gitB.setContentAreaFilled(false);
+			gitB.setBorderPainted(false);
+			gitB.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			gitB.setFocusable(false);
+			gitB.setToolTipText("Criador");
+			gitB.setBounds(350, 118, 50, 50);
+			frame.getContentPane().add(gitB);
 			
 			//configurações para link cifra melodica
 			link.setForeground(Color.BLUE.darker());
@@ -204,6 +219,27 @@ public class Principal {
 			    }
 			});
 			
+			gitB.addMouseListener(new MouseAdapter() {
+			    @Override
+			    public void mouseEntered(MouseEvent e) {
+			    	gitB.setIcon(git2);
+			    }
+			 
+			    @Override
+			    public void mouseExited(MouseEvent e) {
+			    	gitB.setIcon(git);
+			    }
+			});
+			
+			gitB.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					try {
+						Desktop.getDesktop().browse(new URI("https://github.com/danknightt"));
+					} catch (IOException | URISyntaxException e1) {
+				            e1.printStackTrace();
+				    }
+				}
+			});
 			
 			PesFile.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
