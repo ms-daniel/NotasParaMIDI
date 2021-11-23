@@ -1,4 +1,4 @@
-# NotasParaMIDI
+# NotasParaMIDI/C++
 Esse programa transforma notas musicais por extenso para caracteres ascii que são tocados em programa assembly(mars - mips)) 
 
 Ex.:
