@@ -57,6 +57,7 @@ public class Principal {
 		private JButton gitB;
 		private ImageIcon git  = new ImageIcon("resources/git-icon.png");
 		private ImageIcon git2 = new ImageIcon("resources/git-icon2.png");
+		private ImageIcon janelaIcon = new ImageIcon("resources/janelaIcon.png");
 		
 		private JFileChooser escolher; //seletor de arquivo		
 		private String DirOrig = null;		//diretorio de origem do arquivo
@@ -100,6 +101,7 @@ public class Principal {
 			frame = new JFrame("Transforma Notas Para Ascii");
 			frame.setBounds(450, 230, 450, 225);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setIconImage(janelaIcon.getImage());
 			frame.getContentPane().setLayout(null);
 			
 			//cria e abre a tela para selecionar o arquivo
