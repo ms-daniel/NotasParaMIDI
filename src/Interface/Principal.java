@@ -107,7 +107,7 @@ public class Principal {
 			
 			//parte da pesquisa onde esta o arquivo de origem
 			//nome da label
-			LabPesFile = new JLabel("Arquvio de origem:");
+			LabPesFile = new JLabel("Arquivo de origem:");
 			LabPesFile.setFont(new Font("Tahoma", Font.PLAIN, 13));
 			LabPesFile.setBounds(15, 3, 293, 20);
 			frame.getContentPane().add(LabPesFile);
