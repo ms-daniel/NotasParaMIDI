@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,12 +13,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -51,13 +47,13 @@ public class Principal {
 		
 		private JButton Conv;
 		private JButton tips;
-		private ImageIcon tip_icon = new ImageIcon("resources/tip-icon.png");
-		private ImageIcon tip_icon2 = new ImageIcon("resources/tip-icon2.png");
+		private ImageIcon tip_icon = new ImageIcon(getClass().getClassLoader().getResource("tip-icon.png"));
+		private ImageIcon tip_icon2 = new ImageIcon(getClass().getClassLoader().getResource("tip-icon2.png"));
 		
 		private JButton gitB;
-		private ImageIcon git  = new ImageIcon("resources/git-icon.png");
-		private ImageIcon git2 = new ImageIcon("resources/git-icon2.png");
-		private ImageIcon janelaIcon = new ImageIcon("resources/janelaIcon.png");
+		private ImageIcon git  = new ImageIcon(getClass().getClassLoader().getResource("git-icon.png"));
+		private ImageIcon git2 = new ImageIcon(getClass().getClassLoader().getResource("git-icon2.png"));
+		private ImageIcon janelaIcon = new ImageIcon(getClass().getClassLoader().getResource("janelaIcon.png"));
 		
 		private JFileChooser escolher; //seletor de arquivo		
 		private String DirOrig = null;		//diretorio de origem do arquivo
