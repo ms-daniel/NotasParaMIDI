@@ -1,17 +1,26 @@
 package Interface;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -19,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 @SuppressWarnings("unused")
 public class Principal {
@@ -34,7 +44,15 @@ public class Principal {
 		private JButton PesDest;
 		private JTextField TexPesDest;
 		
+		private JLabel link = new JLabel("Para encontrar cifras melodicas recomendamos"
+				+ "\n este site (Deixe as quebras de linha e apenas as notas)");
+
+		private Desktop Desktop;
+		
 		private JButton Conv;
+		private JButton tips;
+		private ImageIcon tip_icon = new ImageIcon("resources/tip-icon.png");
+		private ImageIcon tip_icon2 = new ImageIcon("resources/tip-icon2.png");
 		
 		private JFileChooser escolher; //seletor de arquivo		
 		private String DirOrig = null;		//diretorio de origem do arquivo
@@ -99,9 +117,11 @@ public class Principal {
 			TexPesFile.setEditable(false);
 			TexPesFile.setBackground(new Color(255, 255, 255));
 			TexPesFile.setColumns(10);
+			
 			//botao de pesquisa
 			PesFile = new JButton("Selecionar");
 			PesFile.setBounds(315, 25, 100, 25);
+			PesFile.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			frame.getContentPane().add(PesFile);
 			
 			//parte da pesquisa do diretorio onde salvar
@@ -119,6 +139,7 @@ public class Principal {
 			
 			PesDest = new JButton("Selecionar");
 			PesDest.setBounds(315, 77, 100, 25);
+			PesDest.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			frame.getContentPane().add(PesDest);
 			PesDest.setEnabled(false);
 			
@@ -126,8 +147,63 @@ public class Principal {
 			Conv = new JButton("CONVERTER");
 			Conv.setBounds(155, 120, 120, 50);
 			Conv.setBackground(new Color(26,148,49));
+			Conv.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			frame.getContentPane().add(Conv);
 			Conv.setEnabled(false);
+			
+			//botao de dicas
+			tips = new JButton();
+			tips.setIcon(tip_icon);
+			tips.setContentAreaFilled(false);
+			tips.setBorderPainted(false);
+			tips.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			tips.setFocusable(false);
+			tips.setToolTipText("Dicas");
+			tips.setBounds(30, 118, 50, 50);
+			frame.getContentPane().add(tips);
+			
+			//configurações para link cifra melodica
+			link.setForeground(Color.BLUE.darker());
+			link.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			
+			//ações quando passa o mouse por cima
+			link.addMouseListener(new MouseAdapter() {
+			    @Override
+			    public void mouseClicked(MouseEvent e) {
+			    	try {
+			            Desktop.getDesktop().browse(new URI("http://www.ciframelodica.com.br"));
+			             
+			        } catch (IOException | URISyntaxException e1) {
+			            e1.printStackTrace();
+			        }
+			    }
+			 
+			    @Override
+			    public void mouseEntered(MouseEvent e) {
+			    	link.setText("<html><a href=''>Para encontrar cifras melodicas recomendamos"
+			    						+ " este site (Deixe as quebras de linha e apenas as notas)" + "</a></html>");
+			    }
+			 
+			    @Override
+			    public void mouseExited(MouseEvent e) {
+			    	link.setText("Para encontrar cifras melodicas recomendamos"
+    						+ " este site (Deixe as quebras de linha e apenas as notas)");
+			    }
+			});
+			
+			//ações do mouse no icone de dicas
+			tips.addMouseListener(new MouseAdapter() {
+			    @Override
+			    public void mouseEntered(MouseEvent e) {
+			    	tips.setIcon(tip_icon2);
+			    }
+			 
+			    @Override
+			    public void mouseExited(MouseEvent e) {
+			    	tips.setIcon(tip_icon);
+			    }
+			});
+			
 			
 			PesFile.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -192,6 +268,12 @@ public class Principal {
 					catch (IOException e) {
 						System.out.println(e);
 					}
+				}
+			});
+			
+			tips.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JOptionPane.showMessageDialog(null, link, "Dica!", 1, tip_icon);	
 				}
 			});
 				

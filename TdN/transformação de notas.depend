@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1637372034 source:e:\downloads(hd)\facul\materias\estrutura de dados 2\transformação de notas\main.cpp
-	<iostream>
-	<fstream>
-	<string>
-	<cstring>
-
