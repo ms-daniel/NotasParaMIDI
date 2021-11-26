@@ -14,7 +14,7 @@ public class Trans {
 	
 	private String saida = "";
 	
-	private String[] notas1 = {"do", "do#", "re", "re#", "mi", "fa", "fa#", "sol", "sol#", "la", "la#", "si"};
+	private String[] notas1 = {"do", "do#", "re", "re#", "mi", "fa", "fa#", "sol", "sol#", "la", "la#", "si", "ps"};
     
 	//atribui a entrada
 	public void setIn(FileInputStream arqO) {
@@ -111,8 +111,12 @@ public class Trans {
 					
 					barra.setValor(i+1);
 					
-					for(int j = 0; j < 12; j++){
+					
+					for(int j = 0; j < 13; j++){
+						System.out.println("atual: " + notAt);
+						System.out.println("nota: " + notas1[j]);
 				        if(notAt.equals(notas1[j])){
+				        	
 				            switch(j+1){
 				                case 1:
 				                    notOut = 60 + oitava;
@@ -161,6 +165,11 @@ public class Trans {
 				                case 12:
 				                    notOut = 71 + oitava;
 				                    break;
+				                   
+				                case 13:
+				                	System.out.println(notAt);
+				                	notOut = 126;
+				                	break;
 
 				                default:
 				                    notOut = 126;

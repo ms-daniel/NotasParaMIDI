@@ -41,7 +41,7 @@ public class Principal {
 		private JTextField TexPesDest;
 		
 		private JLabel link = new JLabel("Para encontrar cifras melodicas recomendamos"
-				+ "\n este site (Deixe as quebras de linha e apenas as notas)");
+				+ "\n este site (Deixe as quebras de linha e apenas as notas). obs: utilize \"ps\"no final de cada frase para adicionar uma pausa");
 
 		private Desktop Desktop;
 		
@@ -194,13 +194,13 @@ public class Principal {
 			    @Override
 			    public void mouseEntered(MouseEvent e) {
 			    	link.setText("<html><a href=''>Para encontrar cifras melodicas recomendamos"
-			    						+ " este site (Deixe as quebras de linha e apenas as notas)" + "</a></html>");
+			    						+ " este site (Deixe as quebras de linha e apenas as notas). obs: utilize \"ps\"no final de cada frase para adicionar uma pausa" + "</a></html>");
 			    }
 			 
 			    @Override
 			    public void mouseExited(MouseEvent e) {
 			    	link.setText("Para encontrar cifras melodicas recomendamos"
-    						+ " este site (Deixe as quebras de linha e apenas as notas)");
+    						+ " este site (Deixe as quebras de linha e apenas as notas). obs: utilize \"ps\"no final de cada frase para adicionar uma pausa");
 			    }
 			});
 			
